@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from posts.models import Pin
+from pins.models import Pin
 
 
 class PinSerializer(serializers.ModelSerializer):
