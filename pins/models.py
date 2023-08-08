@@ -34,8 +34,11 @@ class Pin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-            upload_to='images/', default='../default_post_chzmzw.jpg', blank=False)
-    category = models.CharField(max_length=20, choices=pin_category_choices)
+            upload_to='images/', default='../default_post_chzmzw.jpg', blank=False
+            )
+    category = models.CharField(
+        max_length=20, choices=pin_category_choices, default='normal'
+        )
 
 
     class Meta:
