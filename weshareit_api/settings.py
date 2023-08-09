@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'pins',
     'comments',
     'loves',
+    'followers',
 
 ]
 
