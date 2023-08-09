@@ -8,7 +8,7 @@ from .settings import (
 @api_view()
 def root_route(request):
     return Response({
-        "message": "Welcome to my WeShareIt API!"
+        "message": "Welcome to the WeShareIt API for my React social website!"
     })
 
 @api_view(['POST'])
