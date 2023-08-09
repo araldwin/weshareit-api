@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from pins.models import Pin
 from loves.models import Love
+from saves.models import Save
 
 
 class PinSerializer(serializers.ModelSerializer):
@@ -11,6 +12,7 @@ class PinSerializer(serializers.ModelSerializer):
     love_id = serializers.SerializerMethodField()
     loves_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    saved_pins_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -44,5 +46,5 @@ class PinSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'content', 'image', 'category', 'love_id',
-            'loves_count', 'comments_count',
+            'loves_count', 'comments_count','saved_pins_count',
         ]

@@ -14,7 +14,8 @@ class PinList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Pin.objects.annotate(
         loves_count=Count('loves', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        comments_count=Count('comment', distinct=True),
+        saved_pins_count=Count('saves', distinct=True),
     ).order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
@@ -48,7 +49,9 @@ class PinDetail(generics.RetrieveUpdateDestroyAPIView):
     Retrieve a pin and edit or delete it if you own it.
     """
     serializer_class = PinSerializer
+    permission_classes = [IsOwnerOrReadOnly]
     queryset = Pin.objects.annotate(
         loves_count=Count('loves', distinct=True),
-        comments_count=Count('comment', distinct=True)
+        comments_count=Count('comment', distinct=True),
+        saved_pins_count=Count('saves', distinct=True)
     ).order_by('-created_at')

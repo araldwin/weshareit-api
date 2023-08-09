@@ -52,12 +52,13 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'django_filters',
-    
+
     'profiles',
     'pins',
     'comments',
     'loves',
     'followers',
+    'saves',
 
 ]
 

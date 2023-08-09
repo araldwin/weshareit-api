@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Profile
 from followers.models import Follower
+from saves.models import Save
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -9,6 +10,8 @@ class ProfileSerializer(serializers.ModelSerializer):
     pins_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
+    saved_pins_count = serializers.ReadOnlyField()
+
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -28,5 +31,5 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'updated_at', 'name',
             'content', 'image', 'is_owner', 'following_id', 'pins_count',
-            'followers_count', 'following_count',
+            'followers_count', 'following_count','saved_pins_count',
         ]
