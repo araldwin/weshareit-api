@@ -21,6 +21,18 @@ class PinList(generics.ListCreateAPIView):
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
+
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'loves__owner__profile',
+        'owner__profile',
+    ]
+
+    search_fields = [
+        'owner__username',
+        'title',
+        'category',
+    ]
     ordering_fields = [
         'loves_count',
         'comments_count',
